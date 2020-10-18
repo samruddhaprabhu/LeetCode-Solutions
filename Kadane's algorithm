@@ -1,0 +1,16 @@
+Given an array of integers that can be both +ve and -ve, find the contiguous subarray  with the largest sum.   e.g, [1,2,-1,2,-3,2,-5]  -> the first 4 elements have the largest sum. 
+
+The brute force solution is to iterate through each subarray by using two for loops, and   calculating the sum of each subarray.    
+for i -> 0 to a.length   
+  sum = 0   
+  for j -> i to a.length
+    sum = sum + a[j]          
+    check if sum is max and save if so    
+    This takes O(n^2) time and O(1) space. It is good to mention this to the interviewer.  We can however, do this problem in O(n) time and O(1) space.    We use Kadane's algorithm. If we know the max sum ending at a[i-1],  we can calculate the max sum ending at a[i].    max_sum_ending_at[i] = Max(max_sum_ending_at[i-1] + a[i], 0)    This is because if a sum ending at i is -ve, then 0 is always   the better sum, because the sum of an empty subarray is always zero. 
+Pseudocode:  
+for i -> 0 to a.length - 1:     
+  find max sum ending at i     
+  if largest sum encountered so far:         
+     save in a variable 
+Test Cases:  Edge Cases: empty array, null array  Base Cases: single element (+ve, 0, -ve), two elements  Regular Cases: all -ve, all +ve, mix -ve and +ve, all 0s 
+
