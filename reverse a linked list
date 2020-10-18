@@ -1,0 +1,31 @@
+Reverse a linked list. You should use O(1) space.
+
+Pseudocode:  
+(Note: Never write pseudocode in an actual interview. Unless you're writing a few lines quickly to plan out your solution.
+Your actual solution should be in a real language and use good syntax.) 
+
+ prev = null 
+ curr = head 
+ while curr != null  
+      Node next = curr.next      
+      curr.next = prev      
+      prev = curr      
+      curr = next
+      
+ prev is the new head, return prev 
+ 
+Test Cases:  Edge Cases: Empty list  Base Cases: Single node, 2 nodes  Regular Cases: > 2 nodes 
+Time Complexity: O(n) 
+Space Complexity: O(1)  
+
+public static Node reverse(Node head) { 
+   Node prev = null, curr = head;     
+   while (curr != null) {         
+       Node next = curr.getNext();         
+       curr.setNext(prev);        
+       prev = curr;         
+       curr = next;     
+       }     
+       return prev;
+    } 
+ 
